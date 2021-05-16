@@ -48,10 +48,24 @@ En caso de que falle la ejecucion mediante docker-compose, debera compilar y eje
 
 
 challenge-birras-santander-meet-up
-SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/santander_db?createDatabaseIfNotExist\=true&serverTimezone\=UTC&useLegacyDatetimeCode\=false;SPRING_DATASOURCE_USERNAME=root;SPRING_DATASOURCE_PASSWORD=Santander123;KEY_WEATHER=7d1046095emsh5c40257db3ecc8fp14f89bjsn370c2ada41d8;HOST_WEATHER=community-open-weather-map.p.rapidapi.com;URL_WEATHER=https://community-open-weather-map.p.rapidapi.com/forecast/daily?q\=argentina&ar&units\=metric&cnt\=16;FIXED_RATE=600000;AMQ_USER=admin;AMQ_PASS=admin;RESEND_MQ_DELAY=1000000;MQ_QUEUE=meetUp;MANAGER_AMQ_URL=tcp://localhost:61616
+
+SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/santander_db?createDatabaseIfNotExist\=true&serverTimezone\=UTC&useLegacyDatetimeCode\=false
+SPRING_DATASOURCE_USERNAME=root
+SPRING_DATASOURCE_PASSWORD=Santander123
+KEY_WEATHER=7d1046095emsh5c40257db3ecc8fp14f89bjsn370c2ada41d8
+HOST_WEATHER=community-open-weather-map.p.rapidapi.com
+URL_WEATHER=https://community-open-weather-map.p.rapidapi.com/forecast/daily?q\=argentina&ar&units\=metric&cnt\=16
+FIXED_RATE=600000
+AMQ_USER=admin
+AMQ_PASS=admin
+RESEND_MQ_DELAY=1000000
+MQ_QUEUE=meetUp
+MANAGER_AMQ_URL=tcp://localhost:61616
 
 challenge-birras-santander-login
-SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/santander_db?createDatabaseIfNotExist\=true&TZ\=America/Argentina/Buenos_Aires;SPRING_DATASOURCE_USERNAME=root;SPRING_DATASOURCE_PASSWORD=Santander123
+SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/santander_db?createDatabaseIfNotExist\=true&TZ\=America/Argentina/Buenos_Aires
+SPRING_DATASOURCE_USERNAME=root
+SPRING_DATASOURCE_PASSWORD=Santander123
 
 #### Lista de servicios
 
@@ -69,5 +83,5 @@ SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/santander_db?createDatabaseIfN
 
 ### Collection Postman
 
-https://www.getpostman.com/collections/7fd2fed57f14e87e3236
+[Collection](https://github.com/agreggio/challenge-birras-santander/blob/develop/postman/challenge.birras.santander.postman_collection.json)
 
