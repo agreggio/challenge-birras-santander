@@ -6,7 +6,7 @@ import com.agreggio.challenge.birras.santander.common.repository.MeetUpRepositor
 import com.agreggio.challenge.birras.santander.meet.up.dto.AmountBeerDto;
 import com.agreggio.challenge.birras.santander.meet.up.dto.MeetUpDto;
 import com.agreggio.challenge.birras.santander.meet.up.dto.WeatherMeetUpDto;
-import com.agreggio.challenge.birras.santander.meet.up.manager.impl.WeatherCacheManagerImpl;
+import com.agreggio.challenge.birras.santander.meet.up.manager.WeatherCacheManager;
 import com.agreggio.challenge.birras.santander.meet.up.service.GuestService;
 import com.agreggio.challenge.birras.santander.meet.up.service.MeetUpService;
 import com.agreggio.challenge.birras.santander.meet.up.service.MessageMqService;
@@ -38,7 +38,7 @@ public class MeetUpServiceImpl implements MeetUpService {
     private MeetUpRepository meetUpRepository;
 
     @Autowired
-    private WeatherCacheManagerImpl weatherCacheManagerImpl;
+    private WeatherCacheManager weatherCacheManager;
 
     @Autowired
     private GuestService guestService;
@@ -103,7 +103,7 @@ public class MeetUpServiceImpl implements MeetUpService {
         /*
          * Find temperature day on cache
          * */
-        weatherMeetUpDto.setTemperature(weatherCacheManagerImpl.getTemperatureByDate(meetUp.getEventDate()));
+        weatherMeetUpDto.setTemperature(weatherCacheManager.getTemperatureByDate(meetUp.getEventDate()));
 
         return weatherMeetUpDto;
     }
@@ -112,7 +112,6 @@ public class MeetUpServiceImpl implements MeetUpService {
     @Override
     public MeetUpDto createMeetUp(MeetUpDto meetUpDto) throws ServiceException {
 
-        //TODO: revisar la fecha de new Date
         if (meetUpDto.getEventDate().before(new Date())){
             LOGGER.warn("Error create meetUp with date: "+ meetUpDto.getEventDate());
             throw new ServiceException("No se puede crear meetUp con fecha: " +

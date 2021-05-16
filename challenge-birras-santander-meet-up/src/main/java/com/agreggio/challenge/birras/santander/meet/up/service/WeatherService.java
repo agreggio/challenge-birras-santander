@@ -1,6 +1,7 @@
 package com.agreggio.challenge.birras.santander.meet.up.service;
 
 
+import com.agreggio.challenge.birras.santander.common.exception.ServiceException;
 import com.agreggio.challenge.birras.santander.meet.up.dto.weather.WeatherResponseDto;
 
 public interface WeatherService {
@@ -10,6 +11,6 @@ public interface WeatherService {
      *
      * @return {@link WeatherResponseDto}
      */
-    WeatherResponseDto getWeather();
+    WeatherResponseDto getWeather() throws ServiceException;
 
 }

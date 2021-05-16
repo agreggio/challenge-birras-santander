@@ -12,6 +12,17 @@ services:
       MYSQL_ROOT_PASSWORD: Santander123
       TZ: America/Argentina/Buenos_Aires
 
+  activemq:
+    image: rmohr/activemq:latest
+    container_name: activemq
+    environment:
+      - "TZ=America/Argentina/Buenos_Aires"
+    volumes:
+      - "./activemq/activemq.xml:/conf/activemq.xml"
+    ports:
+      - "61616:61616"
+      - "8161:8161"
+
   app:
     depends_on:
       - db
@@ -23,38 +34,48 @@ services:
     environment:
       PMA_HOST: db
 
-  #service 3: definition of your spring-boot app
-  customerservice:                        #it is just a name, which will be used only in this file.
-    image: challenge-birras-santander-login               #name of the image after dockerfile executes
-    container_name: challenge-birras-santander-login  #name of the container created from docker image
+  login-service:
+    image: challenge-birras-santander-login
+    container_name: challenge-birras-santander-login
     build:
-      context: ./challenge-birras-santander-login                          #docker file path (. means root directory)
-      dockerfile: Dockerfile              #docker file name
+      context: ./challenge-birras-santander-login
+      dockerfile: Dockerfile
     ports:
-      - "8080:8080"                       #docker containter port with your os port
+      - "8080:8080"
     restart: always
 
-    depends_on:                           #define dependencies of this app
-      - db                                #dependency name (which is defined with this name 'db' in this file earlier)
+    depends_on:
+      - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://appsDB:3306/santander_db?createDatabaseIfNotExist=true
+      TZ: America/Argentina/Buenos_Aires
+      SPRING_DATASOURCE_URL: jdbc:mysql://appsDB:3306/santander_db?createDatabaseIfNotExist=true&TZ=America/Argentina/Buenos_Aires
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: Santander123
 
-  #service 4: definition of your spring-boot app
-  customerservice:                        #it is just a name, which will be used only in this file.
-    image: challenge-birras-santander-meet-up                #name of the image after dockerfile executes
-    container_name: challenge-birras-santander-meet-up  #name of the container created from docker image
+
+  meet-up-service:
+    image: challenge-birras-santander-meet-up
+    container_name: challenge-birras-santander-meet-up
     build:
-      context: ./challenge-birras-santander-meet-up                          #docker file path (. means root directory)
-      dockerfile: Dockerfile              #docker file name
+      context: ./challenge-birras-santander-meet-up
+      dockerfile: Dockerfile
     ports:
-      - "8081:8081"                       #docker containter port with your os port
+      - "8081:8081"
     restart: always
 
-    depends_on:                           #define dependencies of this app
-      - db                                #dependency name (which is defined with this name 'db' in this file earlier)
+    depends_on:
+      - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://appsDB:3306/santander_db?createDatabaseIfNotExist=true
+      TZ: America/Argentina/Buenos_Aires
+      SPRING_DATASOURCE_URL: jdbc:mysql://appsDB:3306/santander_db?createDatabaseIfNotExist=true&TZ=America/Argentina/Buenos_Aires
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: Santander123
+      KEY_WEATHER: 7d1046095emsh5c40257db3ecc8fp14f89bjsn370c2ada41d8
+      HOST_WEATHER: community-open-weather-map.p.rapidapi.com
+      URL_WEATHER: https://community-open-weather-map.p.rapidapi.com/forecast/daily?q=argentina&ar&units=metric&cnt=16
+      FIXED_RATE: 600000
+      AMQ_USER: admin
+      AMQ_PASS: admin
+      RESEND_MQ_DELAY: 1000000
+      MQ_QUEUE: meetUp
+      MANAGER_AMQ_URL: tcp://activemq:61616
