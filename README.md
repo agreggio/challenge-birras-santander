@@ -47,8 +47,16 @@ Para ejecutar el proyecto de forma local se debe tener previamente instalado las
 
 En caso de que falle la ejecucion mediante docker-compose, debera compilar y ejecutar cada microservicio de forma independiente.
 
+challenge-birras-santander-common
+
+Agregar las dependencias a su repositorio local
+
+```code
+    mvn clean install
+```
 
 challenge-birras-santander-meet-up
+
 ```code
 SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/santander_db?createDatabaseIfNotExist\=true&serverTimezone\=UTC&useLegacyDatetimeCode\=false
 SPRING_DATASOURCE_USERNAME=root
