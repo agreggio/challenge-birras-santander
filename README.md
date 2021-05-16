@@ -14,6 +14,8 @@ Proyecto entrevista tecnica Santander Tecnologias
 
 ###Modelo de Arquitectura
 
+![alt text](https://github.com/agreggio/challenge-birras-santander/blob/develop/challengeMeetUps.png)
+
 ###Modelo Entidad-Relacion
 
 ###Ejecucion del proyecto
