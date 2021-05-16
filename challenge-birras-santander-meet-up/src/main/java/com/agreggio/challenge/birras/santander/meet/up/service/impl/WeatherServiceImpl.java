@@ -3,6 +3,7 @@ package com.agreggio.challenge.birras.santander.meet.up.service.impl;
 import java.net.URI;
 
 
+import com.agreggio.challenge.birras.santander.common.exception.ServiceException;
 import com.agreggio.challenge.birras.santander.meet.up.dto.weather.WeatherResponseDto;
 import com.agreggio.challenge.birras.santander.meet.up.service.WeatherService;
 import org.slf4j.Logger;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 
@@ -28,10 +30,9 @@ public class WeatherServiceImpl implements WeatherService {
     @Value("${key.weather}")
     private String KEY;
 
-    //TODO: mejorar no maneja excepciones si no anda el ms explota por todos lados
 	@Override
     @Cacheable("weather_service")
-    public WeatherResponseDto getWeather() {
+    public WeatherResponseDto getWeather() throws ServiceException {
 
         LOGGER.info("Calling weather service ");
 
@@ -42,7 +43,17 @@ public class WeatherServiceImpl implements WeatherService {
 
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<String> request = new HttpEntity<>("", headers);
-        ResponseEntity<WeatherResponseDto> result = restTemplate.exchange(URI.create(WEATHER_URL), HttpMethod.GET, request, WeatherResponseDto.class);
+
+        ResponseEntity<WeatherResponseDto> result;
+
+        try {
+
+            result = restTemplate.exchange(URI.create(WEATHER_URL), HttpMethod.GET, request, WeatherResponseDto.class);
+
+        }catch(RestClientException e){
+            throw new ServiceException("Error al obtener temperatura " + e.getMessage());
+        }
+
 
         return result.getBody();
 

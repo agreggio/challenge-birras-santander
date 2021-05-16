@@ -23,13 +23,13 @@ public interface WeatherCacheManager {
      * Create a cache weather
      *
      */
-    void createCacheWeather();
+    void createCacheWeather() throws ServiceException;
 
     /**
      * Refresh cache
      *
      */
-    void refresh();
+    void refresh() throws ServiceException;
 
     /**
      * Call the weather service and get the temperature
@@ -37,6 +37,6 @@ public interface WeatherCacheManager {
      * @param weatherDate {@link Date}
      * @return {@link Double}
      */
-    Double getTemperatureByDate(Date weatherDate) throws ServiceException;
+    Double getTemperatureByDate(Date weatherDate);
 
 }

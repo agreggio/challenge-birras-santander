@@ -9,6 +9,9 @@ function trap_ctrlc() {
 
 trap "trap_ctrlc" 2
 
+cd challenge-birras-santander-common &&
+ sudo mvn clean install &&
+cd ../ &&
 cd challenge-birras-santander-login &&
  sudo mvn clean package -DskipTests &&
 cd ../ &&

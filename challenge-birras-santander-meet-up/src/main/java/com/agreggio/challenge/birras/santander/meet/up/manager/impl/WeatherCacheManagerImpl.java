@@ -13,7 +13,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -32,18 +31,20 @@ public class WeatherCacheManagerImpl implements WeatherCacheManager {
     @PostConstruct
     @Cacheable("weather")
     @Override
-    public void createCacheWeather() {
+    public void createCacheWeather() throws ServiceException {
 
         LOGGER.info("Create cache weather");
 
         temperatureDayMap = weatherService.getWeather().getWeatherDtoList().stream().collect(Collectors.toMap(
                 WeatherDto::getDate , weatherDto -> weatherDto.getTemperatureDay().getDay()));
 
+        LOGGER.info("Cache data {} ", temperatureDayMap);
+
     }
 
     @Scheduled(fixedRateString = "${fidex.rate}")
     @Override
-    public void refresh() {
+    public void refresh() throws ServiceException {
 
         LOGGER.info("Refresh cache weather");
 
@@ -52,7 +53,7 @@ public class WeatherCacheManagerImpl implements WeatherCacheManager {
 
 
     @Override
-    public Double getTemperatureByDate(Date weatherDate) throws ServiceException {
+    public Double getTemperatureByDate(Date weatherDate) {
 
         LOGGER.info("Get temperature by date: " + weatherDate);
 
