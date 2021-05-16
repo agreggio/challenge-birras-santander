@@ -1,6 +1,6 @@
 # Challenge-Birras-Santander
 
-Proyecto entrevista tecnica Santander Tecnologias
+Proyecto entrevista técnica Santander Tecnologías
 
 ### Tecnología Utilizada
 - Intellij IDE
@@ -14,17 +14,16 @@ Proyecto entrevista tecnica Santander Tecnologias
 
 ### Modelo de Arquitectura
 
-Se presenta el siguiente modelo de arquitectura, como solucion a generar independencia y escalabilidad entre los distintos micro-servicios.
+Se presenta el siguiente modelo de arquitectura, como solución a generar independencia y escalabilidad entre los distintos micro-servicios.
 
 ![arquitectura](https://github.com/agreggio/challenge-birras-santander/blob/develop/uml/challengeMeetUps.png)
 
-Nota: El micro-servicio pom-enablers-interaction-admin-message se representa en el modelo pero no esta desarrollado, su funcionalidad es tomar los mensajes de la cola AMQ y enviar email a los invitados a la MeetUp.
-
+Nota: El micro-servicio pom-enablers-interaction-admin-message se representa en el modelo pero no esta desarrollado, su funcionalidad es tomar los mensajes de la cola AMQ y enviar email a los invitados de la MeetUp.
 ### Modelo de datos
 
 ![modelo](https://github.com/agreggio/challenge-birras-santander/blob/develop/uml/model.png)
 
-### Ejecucion del proyecto
+### Deploy y ejecución
 
 #### Requisitos previos
 Para ejecutar el proyecto de forma local se debe tener previamente instalado las siguientes herramientas
@@ -35,14 +34,16 @@ Para ejecutar el proyecto de forma local se debe tener previamente instalado las
 - Java
 
 1. Clonar proyecto 
+   
    git clone https://github.com/agreggio/challenge-birras-santander.git
 
 2. Ejecutar comando bash (Linux)
+   
    bash deploy.sh
 
-3. Debe esperar unos minutos para que descarge las imagenes docker, compile y disponibilice los endpoint
+3. Debe esperar unos minutos para que descargue las imágenes docker, compile y disponibilice los endpoint
 
-#### Alternativa de ejecucion
+#### Alternativa de ejecución
 
 En caso de que falle la ejecucion mediante docker-compose, debera compilar y ejecutar cada micro-servicio de forma independiente.
 
