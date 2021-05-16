@@ -16,13 +16,13 @@ Proyecto entrevista tecnica Santander Tecnologias
 
 Se presenta el siguiente modelo de arquitectura, como solucion a generar independencia y escalabilidad entre los distintos micro-servicios.
 
-![arquitectura]()
+![arquitectura](https://github.com/agreggio/challenge-birras-santander/blob/develop/uml/challengeMeetUps.png)
 
 Nota: El micro-servicio pom-enablers-interaction-admin-message se representa en el modelo pero no esta desarrollado, su funcionalidad es tomar los mensajes de la cola AMQ y enviar correo a los invitados a la MeetUp.
 
 ### Modelo de datos
 
-![modelo]()
+![modelo](https://github.com/agreggio/challenge-birras-santander/blob/develop/uml/model.png)
 
 ### Ejecucion del proyecto
 
