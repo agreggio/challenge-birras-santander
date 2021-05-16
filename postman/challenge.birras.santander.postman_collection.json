@@ -7,6 +7,18 @@
 	"item": [
 		{
 			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"accessToken\",jsonData.data[0].token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "basic"
@@ -47,7 +59,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzYW50YW5kZXJKV1QiLCJzdWIiOiJzYW50YW5kZXIiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImlhdCI6MTYyMTEyODkzMywiZXhwIjoxNjIxMTI5NTMzfQ.vYycBYraLvNuLfPmJ1aAUQKOHHKh6UeDAzllJEv2W4bC2SBKcQvUS33eryNYXb97EOgoc6NrzRpaFybXBkEnYw",
+							"value": "{{accessToken}}",
 							"type": "string"
 						}
 					]
@@ -89,7 +101,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzYW50YW5kZXJKV1QiLCJzdWIiOiJzYW50YW5kZXIiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImlhdCI6MTYyMTEyODkzMywiZXhwIjoxNjIxMTI5NTMzfQ.vYycBYraLvNuLfPmJ1aAUQKOHHKh6UeDAzllJEv2W4bC2SBKcQvUS33eryNYXb97EOgoc6NrzRpaFybXBkEnYw",
+							"value": "{{accessToken}}",
 							"type": "string"
 						}
 					]
@@ -128,7 +140,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzYW50YW5kZXJKV1QiLCJzdWIiOiJzYW50YW5kZXIiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImlhdCI6MTYyMTEyODkzMywiZXhwIjoxNjIxMTI5NTMzfQ.vYycBYraLvNuLfPmJ1aAUQKOHHKh6UeDAzllJEv2W4bC2SBKcQvUS33eryNYXb97EOgoc6NrzRpaFybXBkEnYw",
+							"value": "{{accessToken}}",
 							"type": "string"
 						}
 					]
@@ -169,7 +181,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzYW50YW5kZXJKV1QiLCJzdWIiOiJzYW50YW5kZXIiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImlhdCI6MTYyMTEyODkzMywiZXhwIjoxNjIxMTI5NTMzfQ.vYycBYraLvNuLfPmJ1aAUQKOHHKh6UeDAzllJEv2W4bC2SBKcQvUS33eryNYXb97EOgoc6NrzRpaFybXBkEnYw",
+							"value": "{{accessToken}}",
 							"type": "string"
 						}
 					]
@@ -207,7 +219,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzYW50YW5kZXJKV1QiLCJzdWIiOiJzYW50YW5kZXIiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImlhdCI6MTYyMTEyODkzMywiZXhwIjoxNjIxMTI5NTMzfQ.vYycBYraLvNuLfPmJ1aAUQKOHHKh6UeDAzllJEv2W4bC2SBKcQvUS33eryNYXb97EOgoc6NrzRpaFybXBkEnYw",
+							"value": "{{accessToken}}",
 							"type": "string"
 						}
 					]

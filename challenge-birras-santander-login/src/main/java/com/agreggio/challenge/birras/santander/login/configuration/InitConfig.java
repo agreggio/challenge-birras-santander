@@ -29,7 +29,6 @@ public class InitConfig {
 
 		populateUserType();
 
-
 		populateUser();
 
 	}
@@ -49,10 +48,32 @@ public class InitConfig {
 
 		try {
 			userService.createUser(new User(
-					"Juan",
-					"jperez",
-					"Perez",
-					"PereZ321",
+					"Marge",
+					"msimpson",
+					"Simpson",
+					"¡Mmmhhh!",
+					userTypeService.findUserType(UserTypeEnum.USER.getUserTypeId())));
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			userService.createUser(new User(
+					"Homero",
+					"hsimpson",
+					"Simpson",
+					"Donuts",
+					userTypeService.findUserType(UserTypeEnum.USER.getUserTypeId())));
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			userService.createUser(new User(
+					"Bart",
+					"bsimpson",
+					"Simpson",
+					"hayCaramba",
 					userTypeService.findUserType(UserTypeEnum.USER.getUserTypeId())));
 		} catch (ServiceException e) {
 			e.printStackTrace();

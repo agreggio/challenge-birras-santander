@@ -19,6 +19,7 @@ Se presenta el siguiente modelo de arquitectura, como solución a generar indepe
 ![arquitectura](https://github.com/agreggio/challenge-birras-santander/blob/develop/uml/challengeMeetUps.png)
 
 Nota: El microservicio pom-enablers-interaction-admin-message se representa en el modelo pero no esta desarrollado, su funcionalidad es tomar los mensajes de la cola AMQ y enviar email a los invitados de la MeetUp.
+
 ### Modelo de datos
 
 ![modelo](https://github.com/agreggio/challenge-birras-santander/blob/develop/uml/model.png)
@@ -28,35 +29,36 @@ Nota: El microservicio pom-enablers-interaction-admin-message se representa en e
 #### Requisitos previos
 Para ejecutar el proyecto de forma local se debe tener previamente instalado las siguientes herramientas
 - Git
+  git bash
 - Docker
 - Docker-compose
 - Maven
 - Java
 
+#### Instalacion y deploy
+
 1. Clonar proyecto 
-   
-   git clone https://github.com/agreggio/challenge-birras-santander.git
-
-2. Ejecutar comando bash (Linux)
-   
-   bash deploy.sh
-
-3. Debe esperar unos minutos para que descargue las imágenes docker, compile y disponibilice los endpoint
+```code     
+   $ git clone https://github.com/agreggio/challenge-birras-santander.git
+```
+2. Ejecutar comando bash (git-bash)
+```code   
+   $ bash deploy.sh
+```
+3. Debe esperar unos minutos que descargue las imágenes docker, compile y disponibilice los endpoint
 
 #### Alternativa de ejecución
 
-En caso de que falle la ejecucion mediante docker-compose, debera compilar y ejecutar cada microservicio de forma independiente.
+En caso de que falle la ejecucion mediante docker-compose, debera compilar y ejecutar cada microservicio de forma independiente. Debere tener previamente instalado MySQL y ActiveMQ
 
 challenge-birras-santander-common
 
 Agregar las dependencias a su repositorio local
-
 ```code
-    mvn clean install
+$ mvn clean install
 ```
 
 challenge-birras-santander-meet-up
-
 ```code
 SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/santander_db?createDatabaseIfNotExist\=true&serverTimezone\=UTC&useLegacyDatetimeCode\=false
 SPRING_DATASOURCE_USERNAME=root
@@ -93,7 +95,44 @@ SPRING_DATASOURCE_PASSWORD=Santander123
 ##### MyPhpAdmin
 - http://localhost:8085/
 
+### Logs
+Puede visualizar el log de cada ejecucion con el siguiente comando
+```code
+$ docker logs -f container-id
+```
+Debe remplazar container-id por el id de contenedor, puede obtener la lista de contenedores mediante el comando
+```code
+$ docker ps -a
+```
 ### Collection Postman
 
 [Collection](https://github.com/agreggio/challenge-birras-santander/blob/develop/postman/challenge.birras.santander.postman_collection.json)
 
+### Usuarios de prueba
+
+Admin
+```json
+{
+  "user_name":"santander",
+  "password": "santander1234"
+}
+```
+User
+```json
+{
+  "user_name":"msimpson",
+  "password": "¡Mmmhhh!"
+}
+```
+```json
+{
+  "user_name":"hsimpson",
+  "password": "Donuts"
+}
+```
+```json
+{
+  "user_name":"bsimpson",
+  "password": "hayCaramba"
+}
+```
