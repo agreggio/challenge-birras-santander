@@ -81,7 +81,7 @@ SPRING_DATASOURCE_USERNAME=root
 SPRING_DATASOURCE_PASSWORD=Santander123
 ```
 
-#### Lista de servicios
+#### URIs
 
 ##### challenge-birras-santander-login
 - http://localhost:8080/swagger-ui.html
