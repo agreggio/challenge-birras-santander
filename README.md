@@ -48,7 +48,7 @@ En caso de que falle la ejecucion mediante docker-compose, debera compilar y eje
 
 
 challenge-birras-santander-meet-up
-
+```code
 SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/santander_db?createDatabaseIfNotExist\=true&serverTimezone\=UTC&useLegacyDatetimeCode\=false
 SPRING_DATASOURCE_USERNAME=root
 SPRING_DATASOURCE_PASSWORD=Santander123
@@ -61,11 +61,14 @@ AMQ_PASS=admin
 RESEND_MQ_DELAY=1000000
 MQ_QUEUE=meetUp
 MANAGER_AMQ_URL=tcp://localhost:61616
+```
 
 challenge-birras-santander-login
+```code
 SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/santander_db?createDatabaseIfNotExist\=true&TZ\=America/Argentina/Buenos_Aires
 SPRING_DATASOURCE_USERNAME=root
 SPRING_DATASOURCE_PASSWORD=Santander123
+```
 
 #### Lista de servicios
 
