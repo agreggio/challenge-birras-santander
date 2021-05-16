@@ -1,0 +1,243 @@
+{
+	"info": {
+		"_postman_id": "5d7bf970-6000-432c-b663-d052a2431bf5",
+		"name": "challenge.birras.santander",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "basic"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user_name\":\"santander\",\n  \"password\": \"santander1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "amountBeer",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzYW50YW5kZXJKV1QiLCJzdWIiOiJzYW50YW5kZXIiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImlhdCI6MTYyMTEyODkzMywiZXhwIjoxNjIxMTI5NTMzfQ.vYycBYraLvNuLfPmJ1aAUQKOHHKh6UeDAzllJEv2W4bC2SBKcQvUS33eryNYXb97EOgoc6NrzRpaFybXBkEnYw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/amountBeer/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"amountBeer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "weather",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzYW50YW5kZXJKV1QiLCJzdWIiOiJzYW50YW5kZXIiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImlhdCI6MTYyMTEyODkzMywiZXhwIjoxNjIxMTI5NTMzfQ.vYycBYraLvNuLfPmJ1aAUQKOHHKh6UeDAzllJEv2W4bC2SBKcQvUS33eryNYXb97EOgoc6NrzRpaFybXBkEnYw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/weather/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"weather",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "newMeetUp",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzYW50YW5kZXJKV1QiLCJzdWIiOiJzYW50YW5kZXIiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImlhdCI6MTYyMTEyODkzMywiZXhwIjoxNjIxMTI5NTMzfQ.vYycBYraLvNuLfPmJ1aAUQKOHHKh6UeDAzllJEv2W4bC2SBKcQvUS33eryNYXb97EOgoc6NrzRpaFybXBkEnYw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"amount_beer\": 100,\n  \"direction\": \"esto es una direccion\",\n  \"event_date\": \"16-05-2021\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/newMeetUp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"newMeetUp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "confirmGuest",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzYW50YW5kZXJKV1QiLCJzdWIiOiJzYW50YW5kZXIiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImlhdCI6MTYyMTEyODkzMywiZXhwIjoxNjIxMTI5NTMzfQ.vYycBYraLvNuLfPmJ1aAUQKOHHKh6UeDAzllJEv2W4bC2SBKcQvUS33eryNYXb97EOgoc6NrzRpaFybXBkEnYw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8081/confirmGuest/meetUp/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"confirmGuest",
+						"meetUp",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "userCheckIn",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzYW50YW5kZXJKV1QiLCJzdWIiOiJzYW50YW5kZXIiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImlhdCI6MTYyMTEyODkzMywiZXhwIjoxNjIxMTI5NTMzfQ.vYycBYraLvNuLfPmJ1aAUQKOHHKh6UeDAzllJEv2W4bC2SBKcQvUS33eryNYXb97EOgoc6NrzRpaFybXBkEnYw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/userCheckIn/meetUp/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"userCheckIn",
+						"meetUp",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
