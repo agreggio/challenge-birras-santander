@@ -70,8 +70,6 @@ public class GuestServiceImplTest {
 
         when(guestRepositoryMock.save(any(Guest.class))).thenReturn(new Guest());
 
-        when(modelMapperMock.map(new Guest(),GuestDto.class)).thenReturn(new GuestDto());
-
         Assert.assertNull(guestService.saveGuest(anyLong()));
     }
 
