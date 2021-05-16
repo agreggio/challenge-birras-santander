@@ -4,7 +4,6 @@ import com.agreggio.challenge.birras.santander.common.entitie.MeetUp;
 import com.agreggio.challenge.birras.santander.common.exception.ServiceException;
 import com.agreggio.challenge.birras.santander.common.repository.MeetUpRepository;
 import com.agreggio.challenge.birras.santander.meet.up.dto.MeetUpDto;
-import com.agreggio.challenge.birras.santander.meet.up.dto.WeatherMeetUpDto;
 import com.agreggio.challenge.birras.santander.meet.up.manager.WeatherCacheManager;
 import com.agreggio.challenge.birras.santander.meet.up.service.GuestService;
 import com.agreggio.challenge.birras.santander.meet.up.service.MessageMqService;
@@ -21,7 +20,6 @@ import java.util.Date;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 
@@ -58,9 +56,14 @@ public class MeetUpServiceImplTest {
         when(meetUpRepositoryMock.findMeetUpByIdAndDeleteDateIsNull(anyLong()))
                 .thenReturn(Optional.of(new MeetUp()));
 
-        when(weatherCacheManagerMock.getTemperatureByDate(any(Date.class))).thenReturn(17.0);
+        MeetUp meetUp = new MeetUp();
+        meetUp.setId(1L);
 
-        Assert.assertEquals(6,meetUpService.getAmountBeer(1L).getAmountBeer());
+        MeetUpDto meetUpDto = new MeetUpDto();
+        meetUpDto.setId(1L);
+
+
+        Assert.assertEquals(12,meetUpService.getAmountBeer(1L).getAmountBeer());
     }
 
 
@@ -76,12 +79,6 @@ public class MeetUpServiceImplTest {
         MeetUpDto meetUpDto = new MeetUpDto();
         meetUpDto.setId(1L);
 
-        WeatherMeetUpDto weatherMeetUpDto = new WeatherMeetUpDto();
-        weatherMeetUpDto.setTemperature(22.0);
-
-        when(modelMapperMock.map(meetUp,MeetUpDto.class)).thenReturn(meetUpDto);
-
-        when(weatherCacheManagerMock.getTemperatureByDate(any(Date.class))).thenReturn(17.0);
 
         Assert.assertNotNull(meetUpService.getTemperatureDay(1L));
     }
