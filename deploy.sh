@@ -2,7 +2,7 @@
 
 function trap_ctrlc() {
 	echo "Shutting down docker."
-	sudo docker-compose down
+	docker-compose down
 	echo "Stopped bash opeation."
 	exit 2
 }
@@ -10,12 +10,12 @@ function trap_ctrlc() {
 trap "trap_ctrlc" 2
 
 cd challenge-birras-santander-common &&
- sudo mvn clean install &&
+ mvn clean install &&
 cd ../ &&
 cd challenge-birras-santander-login &&
- sudo mvn clean package -DskipTests &&
+ mvn clean package -DskipTests &&
 cd ../ &&
  cd challenge-birras-santander-meet-up &&
- sudo mvn clean package -DskipTests &&
+ mvn clean package -DskipTests &&
  cd ../ &&
- sudo docker-compose -f docker-compose.yml up -d
+ docker-compose -f docker-compose.yml up -d
